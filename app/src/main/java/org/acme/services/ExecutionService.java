@@ -1,46 +1,41 @@
 package org.acme.services;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+
+import org.acme.models.Problem;
+import org.acme.models.Solution;
+import org.acme.utils.FileUtil;
 
 public class ExecutionService {
-	public static List<String> executeScript(char problem) {
-		try {
-			String cmd[] = { "/bin/sh", "-c",
-					"cat /home/jason/Documentos/test.txt | python3 /home/jason/Documentos/script.py" };
-			Process p = Runtime.getRuntime().exec(cmd);
-			p.waitFor();
+	public static void executeScript(Solution solution) {
+		long timestamp = new Date().getTime();
+		solution.setTimestamp(timestamp);
 
-			List<String> output = readOutput(p);
+		Problem problem = ProblemsService.findProblem(solution.getProblem());
 
-			p.destroy();
-			return output;
-		} catch (IOException | InterruptedException e) {
-			System.out.println(e);
+		if (problem == null) {
+			return;
 		}
 
-		return null;
-	}
+		String scriptFilename = String.format("%s/scripts/%s.py", ProblemsService.problemsPath, problem.getName());
+		FileUtil.writeFile(scriptFilename, solution.getSourcecode());
 
-	private static List<String> readOutput(Process proc) {
-		List<String> out = null;
+		for (int i = 1; i <= problem.getCasesTest(); i++) {
 
-		try {
-			BufferedReader output = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-			out = new ArrayList<String>();
+			String inputFilename = String.format("%s/inputs/%s_%d.txt", ProblemsService.problemsPath, problem.getName(),
+					i);
+			String outputFilename = String.format("%s/outputs/%d_%d.txt", ProblemsService.problemsPath, timestamp, i);
+			String command = String.format("python3 %s < %s > %s", scriptFilename, inputFilename, outputFilename);
 
-			String line;
-
-			while ((line = output.readLine()) != null) {
-				out.add(line);
+			try {
+				String cmd[] = { "/bin/sh", "-c", command };
+				Process p = Runtime.getRuntime().exec(cmd);
+				p.waitFor();
+				p.destroy();
+			} catch (IOException | InterruptedException e) {
+				// TODO: handle exception
 			}
-		} catch (IOException e) {
-			System.out.println("Error while reading line");
 		}
-
-		return out;
 	}
 }

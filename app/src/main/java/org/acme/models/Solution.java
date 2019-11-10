@@ -3,26 +3,26 @@ package org.acme.models;
 public class Solution {
 	private String sourcecode;
 	private String filename;
-	private int timestamp;
-	private char problem;
+	private long timestamp;
+	private String problem;
 	private String status;
 
 	public Solution() {
 	}
 
-	public int getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(int timestamp) {
+	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 
-	public char getProblem() {
+	public String getProblem() {
 		return problem;
 	}
 
-	public void setProblem(char problem) {
+	public void setProblem(String problem) {
 		this.problem = problem;
 	}
 

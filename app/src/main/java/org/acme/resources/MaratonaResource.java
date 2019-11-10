@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.acme.models.Solution;
+import org.acme.services.ExecutionService;
 import org.acme.services.ValidationService;
 
 @Path("/maratona")
@@ -22,8 +23,9 @@ public class MaratonaResource {
 
 	@POST
 	public Set<Solution> save(Solution solution) {
-		boolean executionResult = ValidationService.runValidation(solution);
-		solution.setStatus(executionResult == true ? "SUCCESS" : "FAIL");
+		ExecutionService.executeScript(solution);
+		boolean isValid = ValidationService.runValidation(solution);
+		solution.setStatus(isValid ? "SUCCESS" : "FAIL");
 		solutions.add(solution);
 		return solutions;
 	}

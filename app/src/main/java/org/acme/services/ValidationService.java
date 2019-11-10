@@ -1,43 +1,35 @@
 package org.acme.services;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.acme.models.Problem;
 import org.acme.models.Solution;
+import org.acme.utils.FileUtil;
 
 public class ValidationService {
 	public static boolean runValidation(Solution solution) {
-		List<String> scriptExecutionOutput = (ArrayList<String>) ExecutionService.executeScript(solution.getProblem());
-		List<String> expectedOutput = (ArrayList<String>) readSolutionFile(solution.getProblem());
+		Problem problem = ProblemsService.findProblem(solution.getProblem());
 
-		if (scriptExecutionOutput == null || expectedOutput == null) {
+		if (problem == null) {
 			return false;
 		}
 
-		return expectedOutput.equals(scriptExecutionOutput);
-	}
+		for (int i = 1; i <= problem.getCasesTest(); i++) {
+			List<String> expected = FileUtil.fileContentToList(
+					String.format("%s/expecteds/%s_%d.txt", ProblemsService.problemsPath, problem.getName(), i));
 
-	private static List<String> readSolutionFile(char problem) {
-		List<String> output = null;
+			List<String> output = FileUtil.fileContentToList(
+					String.format("%s/outputs/%d_%d.txt", ProblemsService.problemsPath, solution.getTimestamp(), i));
 
-		try {
-			BufferedReader file = new BufferedReader(new FileReader("/home/jason/Documentos/expected.txt"));
-			output = new ArrayList<String>();
-
-			String line;
-
-			while ((line = file.readLine()) != null) {
-				output.add(line);
+			if (expected == null || output == null) {
+				return false;
 			}
 
-			file.close();
-		} catch (IOException e) {
-			// TODO: handle exception
+			if (!expected.equals(output)) {
+				return false;
+			}
 		}
 
-		return output;
+		return true;
 	}
 }

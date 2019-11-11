@@ -17,7 +17,7 @@ public class ProblemsService {
 
 		problems = new ArrayList<>();
 		problems.add(new Problem("a", 2));
-		problems.add(new Problem("b", 3));
+		problems.add(new Problem("b", 1));
 
 		return problems;
 	}

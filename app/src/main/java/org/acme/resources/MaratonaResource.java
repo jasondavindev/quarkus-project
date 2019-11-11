@@ -1,6 +1,7 @@
 package org.acme.resources;
 
 import java.util.Set;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 

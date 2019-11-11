@@ -6,6 +6,7 @@ import java.util.Date;
 import org.acme.models.Problem;
 import org.acme.models.Solution;
 import org.acme.utils.FileUtil;
+import org.acme.utils.Sourcecode;
 
 public class ExecutionService {
 	public static void executeScript(Solution solution) {
@@ -19,7 +20,8 @@ public class ExecutionService {
 		}
 
 		String scriptFilename = String.format("%s/scripts/%s.py", ProblemsService.problemsPath, problem.getName());
-		FileUtil.writeFile(scriptFilename, solution.getSourcecode());
+		String sourcecode = Sourcecode.decode(solution.getSourcecode());
+		FileUtil.writeFile(scriptFilename, sourcecode);
 
 		for (int i = 1; i <= problem.getCasesTest(); i++) {
 

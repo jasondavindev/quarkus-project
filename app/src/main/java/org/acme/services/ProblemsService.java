@@ -8,7 +8,7 @@ import org.acme.models.Problem;
 // TODO: make a singleton service
 public class ProblemsService {
 	private static List<Problem> problems;
-	public static final String problemsPath = "../problems";
+	public static final String problemsPath = "./problems";
 
 	public static List<Problem> getProblems() {
 		if (problems != null) {

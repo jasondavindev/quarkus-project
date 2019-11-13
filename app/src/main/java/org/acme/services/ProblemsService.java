@@ -3,14 +3,16 @@ package org.acme.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import org.acme.models.Problem;
 
-// TODO: make a singleton service
+@ApplicationScoped
 public class ProblemsService {
-	private static List<Problem> problems;
-	public static final String problemsPath = "./problems";
+	private List<Problem> problems;
+	public final String problemsPath = "./problems";
 
-	public static List<Problem> getProblems() {
+	public List<Problem> getProblems() {
 		if (problems != null) {
 			return problems;
 		}
@@ -22,7 +24,7 @@ public class ProblemsService {
 		return problems;
 	}
 
-	public static Problem findProblem(String name) {
+	public Problem findProblem(String name) {
 		for (Problem problem : getProblems()) {
 			if (problem.getName().equals(name)) {
 				return problem;

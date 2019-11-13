@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  app:
+    image: "${PROJECT_NAME}"
+    container_name: "${PROJECT_NAME}_app"
+    build:
+      dockerfile: Dockerfile.jvm
+      context: ../
+    working_dir: /deployments
+    ports:
+      - 3000:8080

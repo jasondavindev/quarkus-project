@@ -2,12 +2,15 @@ package org.acme.services;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import org.acme.models.Problem;
 import org.acme.models.Solution;
 import org.acme.utils.FileUtil;
 
+@ApplicationScoped
 public class ValidationService {
-	public static boolean runValidation(Solution solution) {
+	public boolean runValidation(Solution solution) {
 		Problem problem = ProblemsService.findProblem(solution.getProblem());
 
 		if (problem == null) {

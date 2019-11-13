@@ -3,13 +3,16 @@ package org.acme.services;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import org.acme.models.Problem;
 import org.acme.models.Solution;
 import org.acme.utils.FileUtil;
 import org.acme.utils.Sourcecode;
 
+@ApplicationScoped
 public class ExecutionService {
-	public static void executeScript(Solution solution) {
+	public void executeScript(Solution solution) {
 		long timestamp = new Date().getTime();
 		solution.setTimestamp(timestamp);
 

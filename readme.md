@@ -7,7 +7,7 @@ Os inputs dos scripts em Python estão localizados na pasta ```app/problems/inpu
 ## Endpoints
 **POST /maratona**: inserir nova solução
 ```
-curl -X POST http://localhost:3000/maratona -d '
+curl -X POST http://localhost:3000/maratona -H "Content-Type: application/json" -d '
 {
   "sourcecode": "cHJpbnQoaW50KGlucHV0KCkpICogMik=",
   "filename": "script.py",

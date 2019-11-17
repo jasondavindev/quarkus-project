@@ -4,19 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Singleton;
 
 import org.acme.models.Problem;
 
-@ApplicationScoped
 public class ProblemsService {
+	private static ProblemsService instance;
+
 	private List<Problem> problems;
 	public final String problemsPath = "./problems";
+
+	private ProblemsService() {
+	}
+
+	public static ProblemsService getInstance() {
+		if (instance != null) {
+			return instance;
+		}
+
+		instance = new ProblemsService();
+		return instance;
+	}
 
 	public List<Problem> getProblems() {
 		if (problems != null) {
 			return problems;
 		}
 
+		// It's necessary add problem here to find files
 		problems = new ArrayList<>();
 		problems.add(new Problem("a", 2));
 		problems.add(new Problem("b", 1));

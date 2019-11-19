@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import org.acme.helpers.ExecutionHelper;
 import org.acme.models.Problem;

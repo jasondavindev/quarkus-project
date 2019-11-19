@@ -3,9 +3,6 @@ package org.acme.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Singleton;
-
 import org.acme.models.Problem;
 
 public class ProblemsService {

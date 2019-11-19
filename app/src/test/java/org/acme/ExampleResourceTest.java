@@ -5,19 +5,13 @@ import static io.restassured.RestAssured.given;
 import static javax.ws.rs.core.Response.Status.CREATED;
 import static javax.ws.rs.core.Response.Status.OK;
 import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
 
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.ws.rs.core.MediaType;
 
 import org.acme.models.Solution;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
-
-import java.io.StringReader;
 
 @QuarkusTest
 public class ExampleResourceTest {

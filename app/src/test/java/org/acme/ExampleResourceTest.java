@@ -28,11 +28,7 @@ public class ExampleResourceTest {
     	Solution solution = new Solution();
     	solution.setFilename("script.py");
     	solution.setProblem("a");
-    	solution.setSourcecode("{ " +
-    			  "'sourcecode': 'cHJpbnQoaW50KGlucHV0KCkpICogMik=,' "+
-    			  " 'filename' : 'script.py',"+
-    			  " 'problem': 'a' "+
-    			"}");
+    	solution.setSourcecode("cHJpbnQoaW50KGlucHV0KCkpICogMik=");
     	return solution;
     }
     

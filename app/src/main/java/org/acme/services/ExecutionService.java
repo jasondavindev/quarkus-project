@@ -21,10 +21,7 @@ public class ExecutionService {
 			return;
 		}
 
-		long timestamp = new Date().getTime();
-		solution.setTimestamp(timestamp);
-
-		String scriptFilename = ExecutionHelper.getScriptFilename(problem.getName());
+		String scriptFilename = ExecutionHelper.getScriptFilename(solution.getTimestamp(), problem.getName());
 		String sourcecode = Sourcecode.decode(solution.getSourcecode());
 		FileUtil.writeFile(scriptFilename, sourcecode);
 

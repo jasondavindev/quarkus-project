@@ -37,4 +37,4 @@ release.properties
 # project
 problems/**/*
 !problems/expecteds
-
+!problems/inputs

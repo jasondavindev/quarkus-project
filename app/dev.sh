@@ -45,3 +45,8 @@ function dkdown {
 function dkexec {
   docker exec -ti "$PROJECT_NAME"_app $@
 }
+
+function run {
+  cp -r problems target/problems
+  ./mvnw compile quarkus:dev
+}

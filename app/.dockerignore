@@ -2,6 +2,6 @@
 !target/*-runner
 !target/*-runner.jar
 !target/lib/*
-!target/problems
-target/problems/outputs/*
-target/problems/scripts/*
+!problems
+problems/outputs/*
+problems/scripts/*

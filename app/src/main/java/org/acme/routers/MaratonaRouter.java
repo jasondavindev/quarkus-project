@@ -1,7 +1,9 @@
-package org.acme.resources;
+package org.acme.routers;
 
 import java.util.Set;
 import java.util.List;
+
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,12 +18,9 @@ import org.acme.models.Solution;
 @Path("/maratona")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class MaratonaResource {
+public class MaratonaRouter {
+	@Inject
 	private MaratonaController controller;
-
-	public MaratonaResource() {
-		controller = new MaratonaController();
-	}
 
 	@POST
 	public Set<Solution> save(Solution solution) {

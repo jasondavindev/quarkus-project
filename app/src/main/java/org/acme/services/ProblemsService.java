@@ -5,16 +5,30 @@ import java.util.List;
 
 import org.acme.models.Problem;
 
-// TODO: make a singleton service
 public class ProblemsService {
-	private static List<Problem> problems;
-	public static final String problemsPath = "./problems";
+	private static ProblemsService instance;
 
-	public static List<Problem> getProblems() {
+	private List<Problem> problems;
+	public final String problemsPath = "./problems";
+
+	private ProblemsService() {
+	}
+
+	public static ProblemsService getInstance() {
+		if (instance != null) {
+			return instance;
+		}
+
+		instance = new ProblemsService();
+		return instance;
+	}
+
+	public List<Problem> getProblems() {
 		if (problems != null) {
 			return problems;
 		}
 
+		// It's necessary add problem here to find files
 		problems = new ArrayList<>();
 		problems.add(new Problem("a", 2));
 		problems.add(new Problem("b", 1));
@@ -22,7 +36,7 @@ public class ProblemsService {
 		return problems;
 	}
 
-	public static Problem findProblem(String name) {
+	public Problem findProblem(String name) {
 		for (Problem problem : getProblems()) {
 			if (problem.getName().equals(name)) {
 				return problem;

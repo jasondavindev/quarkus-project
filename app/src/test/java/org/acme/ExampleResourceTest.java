@@ -60,10 +60,17 @@ public class ExampleResourceTest {
 				.extract().asString();
 
 		given()
-			.when().get("/maratona/status/FAIL")
+				.when().get("/maratona/date/" + solution.getTimestamp())
+				.then()
+				.statusCode(OK.getStatusCode())
+				.body(containsString(String.valueOf(solution.getTimestamp())))
+				.extract().asString();
+
+		given()
+			.when().get("/maratona/status/SUCCESS")
 			.then()
 			.statusCode(OK.getStatusCode())
-			.body(containsString("[]"))
+			.body(containsString(String.valueOf(solution.getTimestamp())))
 			.extract().asString();
 
     }
@@ -71,6 +78,7 @@ public class ExampleResourceTest {
 	@Test
 	public void shouldAddFileAStatusFail() {
 		Solution solution = newSolutionB();
+		solution.setProblem("a");
 		given()
 				.body(solution)
 				.contentType(MediaType.APPLICATION_JSON)
@@ -83,7 +91,7 @@ public class ExampleResourceTest {
 				.when().get("/maratona/status/FAIL")
 				.then()
 				.statusCode(OK.getStatusCode())
-				.body(containsString("FAIL"))
+				.body(containsString(String.valueOf(solution.getTimestamp())))
 				.extract().asString();
 
 	}
@@ -107,10 +115,10 @@ public class ExampleResourceTest {
 				.extract().asString();
 
 		given()
-				.when().get("/maratona/status/FAIL")
+				.when().get("/maratona/status/SUCCESS")
 				.then()
 				.statusCode(OK.getStatusCode())
-				.body(containsString("[]"))
+				.body(containsString(String.valueOf(solution.getTimestamp())))
 				.extract().asString();
 
 	}
@@ -118,6 +126,7 @@ public class ExampleResourceTest {
 	@Test
 	public void shouldAddFileBStatusFail() {
 		Solution solution = newSolutionA();
+		solution.setProblem("b");
 		given()
 				.body(solution)
 				.contentType(MediaType.APPLICATION_JSON)
@@ -130,7 +139,7 @@ public class ExampleResourceTest {
 				.when().get("/maratona/status/FAIL")
 				.then()
 				.statusCode(OK.getStatusCode())
-				.body(containsString("FAIL"))
+				.body(containsString(String.valueOf(solution.getTimestamp())))
 				.extract().asString();
 
 	}

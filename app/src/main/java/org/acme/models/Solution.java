@@ -1,5 +1,7 @@
 package org.acme.models;
 
+import java.util.Date;
+
 public class Solution {
 	private String sourcecode;
 	private String filename;
@@ -8,6 +10,7 @@ public class Solution {
 	private String status;
 
 	public Solution() {
+		setTimestamp(new Date().getTime());
 	}
 
 	public long getTimestamp() {

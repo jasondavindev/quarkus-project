@@ -35,11 +35,5 @@ pom.xml.versionsBackup
 release.properties
 
 # project
-<<<<<<< HEAD
 problems/outputs
 problems/scripts
-=======
-problems/**/*
-!problems/expecteds
-!problems/inputs
->>>>>>> parent of ed77733... fix docker file

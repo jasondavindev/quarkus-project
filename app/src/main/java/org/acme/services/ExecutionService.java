@@ -1,7 +1,6 @@
 package org.acme.services;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.enterprise.context.ApplicationScoped;
 

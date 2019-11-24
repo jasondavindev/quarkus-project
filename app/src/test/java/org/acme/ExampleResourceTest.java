@@ -29,7 +29,7 @@ public class ExampleResourceTest {
 		Solution solution = new Solution();
 		solution.setFilename("script.py");
 		solution.setProblem("b");
-		solution.setSourcecode("cHJpbnQoaW5wdXQoKSk=");
+		solution.setSourcecode("YSA9IGlucHV0KCkKCmlmIGEgPT0gIjUgMyI6CglwcmludCgiMiA0IikKZWxpZiBhID09ICI2IDYiOgoJcHJpbnQoIioiKQ==");
 		return solution;
 	}
     
@@ -37,7 +37,7 @@ public class ExampleResourceTest {
     	Solution solution = new Solution();
     	solution.setFilename("script.py");
     	solution.setProblem("a");
-    	solution.setSourcecode("cHJpbnQoaW50KGlucHV0KCkpICogMik=");
+    	solution.setSourcecode("ZW50cmFkYSA9IGlucHV0KCkKdmFsb3JlcyA9IGVudHJhZGEuc3BsaXQoIiAiKQpBPWludCh2YWxvcmVzWzBdKQpCPWludCh2YWxvcmVzWzFdKQpDPWludCh2YWxvcmVzWzJdKQppZiAoQT09QiBhbmQgQT09QyBhbmQgQj09Qyk6CiAgICAgICAgVmVuY2Vkb3IgPSAnKicKZWxpZiAoQSE9QiBhbmQgQj09Qyk6CiAgICAgICAgVmVuY2Vkb3IgPSAnQScKZWxpZiAoQT09QyBhbmQgQiE9QSk6CiAgICAgICAgVmVuY2Vkb3IgPSAnQicKZWxpZiAoQT09QiBhbmQgQyE9QSk6CiAgICAgICAgVmVuY2Vkb3IgPSAnQycKcHJpbnQoVmVuY2Vkb3Ip");
     	return solution;
     }
     

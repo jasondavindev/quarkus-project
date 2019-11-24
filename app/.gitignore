@@ -35,6 +35,5 @@ pom.xml.versionsBackup
 release.properties
 
 # project
-problems/**/*
-!problems/expecteds
-!problems/inputs
+problems/outputs
+problems/scripts

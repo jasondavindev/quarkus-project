@@ -3,9 +3,9 @@ package org.acme.helpers;
 import org.acme.services.ProblemsService;
 
 public class ExecutionHelper {
-	public static String getScriptFilename(long solutionTimestamp, String problemName) {
-		return String.format("%s/scripts/%d_%s.py", ProblemsService.getInstance().problemsPath, solutionTimestamp,
-				problemName);
+	public static String getScriptFilename(long solutionTimestamp, String solutionFilename) {
+		return String.format("%s/scripts/%d_%s", ProblemsService.getInstance().problemsPath, solutionTimestamp,
+				solutionFilename);
 	}
 
 	public static String getOutputFilename(int caseNumber, long problemTimestamp) {

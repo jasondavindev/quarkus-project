@@ -20,7 +20,7 @@ public class ExecutionService {
 			return;
 		}
 
-		String scriptFilename = ExecutionHelper.getScriptFilename(solution.getTimestamp(), problem.getName());
+		String scriptFilename = ExecutionHelper.getScriptFilename(solution.getTimestamp(), solution.getFilename());
 		String sourcecode = Sourcecode.decode(solution.getSourcecode());
 		FileUtil.writeFile(scriptFilename, sourcecode);
 
